@@ -54,7 +54,7 @@ html, body {
 #container .right {
   margin-left: 6.53125rem;
   height: 100%;
-  /*overflow: auto;*/
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
 #container .right ul {
