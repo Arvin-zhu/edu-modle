@@ -1,182 +1,238 @@
-window.onload=function(){
-	container();
-	container5();
-	container6();
-	container9();
-}
 function container(){
-	$("#container .left ul li").on("click",function(){
+	$("#container .swiper-slide").on("click",function(){
 		$(this).addClass("active").siblings().removeClass("active");
 	});
-};
+	var swiper = new Swiper('.swiper-container', {
+		slidesPerView: 4,
+		freeMode: true
+	})
+}
 function container5(){
-	$("#container5 .swiper-slide").on("click",function(){
+	$("#container5 .head").on("touchstart",function(){
+		if($("#container5 .zhezhao").css("opacity")==0){
+			$("#container5 .zhezhao").animate({"opacity":1,"z-index":5},100);
+			$("#container5 .nav").slideDown(300);
+			$("#container5 .head i").html("&#xe625");
+		}else{
+			$("#container5 .zhezhao").animate({"opacity":0,"z-index":-1},100);
+			$("#container5 .nav").slideUp(300);
+			$("#container5 .head i").html("&#xe61f");
+		}
+	})
+	$("#container5 .nav ul li").on("touchstart",function(){
 		$(this).addClass("active").siblings().removeClass("active");
-	});
+	})
 }
 function container6(){
-	var a=0;
-	$("#container6").ready(function(){
-		$("#container6 .iconfont").on("touchstart",function(){
-			var index=$(this).index(".iconfont");
-			if(a==0){
-				$($(".iconfont")[index]).html("&#xe625");
-				a=1;
-			}else{
-				$($(".iconfont")[index]).html("&#xe61f");
-				a=0;
+	var arr=$("ul>li");
+	var len=arr.length;
+	var w=$("ul")[0].offsetWidth;
+	var preX,curX;
+	var transferX=0;
+	for(var i=0;i<len;i++){
+		$(arr[i]).css("left",i*w);
+		arr[i].addEventListener("touchstart",touchstart,false);
+		arr[i].addEventListener("touchmove",touchmove,false);
+		arr[i].addEventListener("touchend",touchend,false);
+	}
+	$(".right").on("click",slide_right);
+	$(".left").on("click",slide_left);
+	function slide_right(){
+		event.preventDefault();
+		for(var i=0;i<len;i++){
+			if($(arr[i]).css("left")=="0px"){
+				var $this=i;
 			}
-			$($("#container6 ol")[index]).children().toggle();
+		}
+		for(var i=0; i<len;i++){
+			if($(arr[len-1]).css("left")=="0px"){
+				for(var i=0;i<len;i++){
+					$(arr[i]).animate({"left":i*w},400);
+				}
+			}else{
+				$(arr[i]).animate({"left":(i-$this-1)*w},400);
+			}
+		}
+	}
+	function slide_left(){
+		event.preventDefault();
+		for(var i=0;i<len;i++){
+			if($(arr[i]).css("left")=="0px"){
+				var $this=i;
+			}
+		}
+		if($(arr[0]).css("left")=="0px"){
+			for(var i=0;i<len;i++){
+				$(arr[i]).animate({"left":w*i},400);
+			}
+		}else{
+			for(var i=0; i<len;i++){
+				$(arr[i]).animate({"left":(i-$this+1)*w},400);
+			}
+		}
+	}
+	//触摸开始
+	function touchstart(event){
+		event.preventDefault();
+		if(event.targetTouches.length==1){      //避免多手指触摸情况
+			var touch=event.targetTouches[0];
+			preX=touch.pageX;
+		}
+	}
+	$("ul>li").mousedown(function(event){
+		event.preventDefault();
+		preX=event.pageX;
+		$(this).mousemove(function(event){
+			event.preventDefault();               //避免触发默认行为，特别在微信端；
+			var $count=$(this);
+			var $index2=$count.index();
+			curX=event.pageX;
+			transferX +=curX-preX;            //用累加是因为css的样式会叠加！！
+			for(var i=0;i<len;i++){
+				$(arr[i]).css("left",(i-$index2)*w+transferX);
+			}
+			preX=curX;
+		})
 	})
-})
+	$("ul>li").mouseup(function(event){
+		event.preventDefault();
+		$("ul>li").unbind("mousemove");
+		transferX=0;                         //止transferX在下一次触摸中继续累加，导致下一次滑动幅度越来越大；
+		var $this=$(this),
+			$index=$(this).index(),
+			$left1=parseInt($(this).css("left")),
+			$left=Math.abs(parseInt($(this).css("left")));
+		if($left<80){                         //设置手指滑动的距离，当小于80px的时候位置不变；
+			for(var i=0;i<len;i++){
+				var curL=parseInt($(arr[i]).css("left"));
+				$(arr[i]).animate({"left":curL-$left1},400);
+			}
+		}else if($left>80){                  //当滑动的距离大于80px的时候，切换；
+			if($left1>0){                    //当手指向右滑动的时候；
+				if($index!=0){              //判断是不是第一张，如果不是则切换；
+					for(var i=0;i<len;i++){
+						$(arr[i]).animate({"left":(i-$index+1)*w},400);
+					}
+				}else{                         //如果是第一张，则保持不变；
+					for(var i=0;i<len;i++){
+						$(arr[i]).animate({"left":i*w},400);
+					}
+				}
+			}else{                          //当手指向左滑动的时候；
+				if($index!=(len-1)){        //判断是不是最后一张，如果不是则切换；
+					for(var i=0;i<len;i++){
+						$(arr[i]).animate({"left":(i-$index-1)*w},400);
+					}
+				}else{                    //如果是最后一张，则保持位置不变；
+					for(var i=0;i<len;i++){
+						$(arr[i]).animate({"left":(i-$index)*w},400);
+					}
+				}
+			}
+		}
+	})
+	//手指拖动
+	function touchmove(event){
+		event.preventDefault();               //避免触发默认行为，特别在微信端；
+		if(event.targetTouches.length==1){    //避免多手机触摸情况
+			var $count=$(this);
+			var $index2=$count.index();
+			var touch=event.targetTouches[0];
+			curX=touch.pageX;
+			transferX +=curX-preX;            //用累加是因为css的样式会叠加！！
+			for(var i=0;i<len;i++){
+				$(arr[i]).css("left",(i-$index2)*w+transferX);
+			}
+			preX=curX;
+		}
+	}
+	function touchend(event){
+		event.preventDefault();
+		transferX=0;                         //为了防止transferX在下一次触摸中继续累加，导致下一次滑动幅度越来越大；
+		var $this=$(this),
+			$index=$(this).index(),
+			$left1=parseInt($(this).css("left")),
+			$left=Math.abs(parseInt($(this).css("left")));
+		if($left<80){                         //设置手指滑动的距离，当小于80px的时候位置不变；
+			for(var i=0;i<len;i++){
+				var curL=parseInt($(arr[i]).css("left"));
+				$(arr[i]).animate({"left":curL-$left1},400);
+			}
+		}else if($left>80){                  //当滑动的距离大于80px的时候，切换；
+			if($left1>0){                    //当手指向右滑动的时候；
+				if($index!=0){              //判断是不是第一张，如果不是则切换；
+					for(var i=0;i<len;i++){
+						$(arr[i]).animate({"left":(i-$index+1)*w},400);
+					}
+				}else{                         //如果是第一张，则保持不变；
+					for(var i=0;i<len;i++){
+						$(arr[i]).animate({"left":i*w},400);
+					}
+				}
+			}else{                          //当手指向左滑动的时候；
+				if($index!=(len-1)){        //判断是不是最后一张，如果不是则切换；
+					for(var i=0;i<len;i++){
+						$(arr[i]).animate({"left":(i-$index-1)*w},400);
+					}
+				}else{                    //如果是最后一张，则保持位置不变；
+					for(var i=0;i<len;i++){
+						$(arr[i]).animate({"left":(i-$index)*w},400);
+					}
+				}
+			}
+		}
+	}
 }
 function container9(){
-	$("#container9").ready(function(){
-		$("#container9 .change").on("click",function(){
-			if(!$("#container9 .left_ul").is(":animated")){
-				$(this).animate({"rotate":"+=360deg"},1000);
-				// $("#container9 .left_ul").animate({"rotateY":"+=360deg"},1000);
-				$("#container9 .left_ul li").eq(0).animate({"rotateY":"+=360deg"},1000);
-				$("#container9 .right_ul").animate({"rotateY":"+=360deg"},1000);
+	setTimeout(function(){
+			var target=$("#container9 .wraper .guide .body #panel .amap_lib_placeSearch_list ul li.poibox");
+			var len=target.length;
+			for(var i=0;i<len;i++){
+				target[i].addEventListener("click",function(){
+					//content=$(this).find("span").html();
+					window.location.href="guide_info.html";
+				},false)
 			}
-		});
-    $("#container9 .nav ul li").on("click",function(){
-    	var index=$(this).index();
-    	$(this).addClass("active").siblings().removeClass("active");
-    	$("#container9 .wraper>li").eq(index).show()
-    									.siblings().hide();
+	},3000);
+	$("#container9 .nav ul li").on("click",function(){
+		var index=$(this).index();
+		$(this).addClass("active").siblings().removeClass("active");
+		$("#container9 .wraper>li").eq(index).show()
+			.siblings().hide();
 
 		if($("#container9 .wraper>li")[0].style.display){
-				var map = new AMap.Map("wrap", {
-			    resizeEnable: true,
-			    });
-			    AMap.service(["AMap.PlaceSearch"], function() {
-			        var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
-			            pageSize:100,
-			            pageIndex: 1,
-			            city: "0512", //城市
-			            map: map,
-			            panel: "panel"
-			        });
-			        //关键字查询
-			        placeSearch.search("苏州瑞鹏");
-			    });
-		}
-    })
-    if($("#container9 .wraper  .home .circle").css("display")=="block"){
-    	var w=$("#container9 .wraper  .home .circle")[0];
-    	var scw=w.offsetWidth/2;
-    	var oleft=w.offsetLeft+w.offsetWidth/2;
-    	var otop=w.offsetTop+w.offsetHeight/2;
-    	var man_w=$("#container9 .wraper  .home .main")[0].offsetWidth/2;
-    	var man_L=oleft-man_w;
-    	var man_H=otop-man_w;
-    	var or=scw*8/4;
-    	var ir=scw;
-    	var left_len=$("#container9 .wraper  .home .main .left_ul li").length;
-    	var right_len=$("#container9 .wraper  .home .main .right_ul li").length;
-    	var mleft=$("#container9 .wraper  .home .main li")[0].offsetLeft;
-    	var mtop=$("#container9 .wraper  .home .main li")[0].offsetTop;
-    	var mWidth=$("#container9 .wraper  .home .main li")[0].offsetWidth;
-    	var mX,mY,mX2,mY2;
-		$("#container9 .wraper  .home .main").css({"left":man_L,"top":man_H})
-    	/*对每个菜单项进行定位*/
-		for(var i=0;i<left_len;i++){
-				mX=parseInt( (Math.cos( (-30*i-90)*Math.PI / 180 ) * ((or+ir)/2) ) + oleft-mWidth/2);
-				mY= parseInt( (Math.sin( (-30*i-90)*Math.PI / 180 ) *  ((or+ir)/2) ) + otop-mWidth/2 );
-				$("#container9 .wraper  .home .main .left_ul li").eq(i).offset( {top:mY,left:mX} );
-		}
-		for(var i=0;i<right_len;i++){
-				mX2=parseInt( (Math.cos( (-30*i-180)*Math.PI / 180 ) * ((or+ir)/2) ) + oleft-mWidth/2);
-				mY2= parseInt( (Math.sin( (-30*i-180)*Math.PI / 180 ) *  ((or+ir)/2) ) + otop-mWidth/2 );
-				$("#container9 .wraper  .home .main .right_ul li").eq(i).offset( {top:mY2,left:mX2} );
-		}
-		var preX,preY;//上一次鼠标点的坐标
-		var curX,curY;//本次鼠标点的坐标
-		var preAngle;//上一次鼠标点与圆心(150,150)的X轴形成的角度(弧度单位)
-		var transferAngle;//当前鼠标点与上一次preAngle之间变化的角度
-		var a = 0;
-		var liObj = $("#container9 .wraper  .home .main li");
-		var ulObj = $("#container9 .wraper  .home .main");
-    	var liLen = liObj.length;
-	    ulObj[0].addEventListener('touchstart',touchstart,false);
-	    ulObj[0].addEventListener('touchmove',touchmove,false);
-	    // ulObj[0].addEventListener('touchend',touchend,false);
-    	function touchstart(event){
-    		if( event.targetTouches.length == 1 )
-    		   {
-    		       var touch = event.targetTouches[0];
-    		       preX = touch.pageX;
-    		       preY=touch.pageY;
-    		       preAngle= Math.atan2(preY-otop, preX-oleft);
-    		   }
-    	}
-    	function touchmove(event){
-    		event.preventDefault();
-    	    if( event.targetTouches.length == 1 )
-    	    {
-    	        var touch = event.targetTouches[0];
-    	        curX=touch.pageX;
-    	        curY=touch.pageY;
-    	        curAngle=Math.atan2(curY-otop,curX-oleft)
-    	        transferAngle=curAngle-preAngle;
-    	        a += (transferAngle * 180 / Math.PI);
-    	        for(var i=0;i < liLen;i++){
-    	        	$('#container9 .wraper .home .main').css("rotate",a);
-    	             $("#container9 .wraper  .home .main li").eq(i).css("rotate",-a);
-    	            preX = curX;
-					preY = curY;
-					preAngle = curAngle;
-    	        }
-    	    }
-    	}
-    	// function touchend(){};
-		$("#container9 .wraper  .home .main").mousedown(function(event){
-			event.preventDefault();
-			preX = event.pageX;
-			preY = event.pageY;
-			//计算当前点击的点与圆心(150,150)的X轴的夹角(弧度) --> 上半圆为负(0 ~ -180), 下半圆未正[0 ~ 180]
-			preAngle = Math.atan2(preY - 150, preX - 150);
-			//移动事件
-			$(this).mousemove(function(event){
-				event.preventDefault();
-				curX = event.pageX;
-				curY = event.pageY;
-				//计算当前点击的点与圆心(150,150)的X轴的夹角(弧度) --> 上半圆为负(0 ~ -180), 下半圆未正[0 ~ 180]
-				var curAngle = Math.atan2(curY - 150, curX - 150);
-				transferAngle = curAngle - preAngle;
-				a += (transferAngle * 180 / Math.PI);//因为后面的样式会替代前面的样式，所以必须 通过累加方式
-				$('#container9 .wraper .home .main').css("rotate",-a);
-
-				for( var i = 0 ; i <= 8 ; i++ ){
-					$("#container9 .wraper  .home .main li").eq(i).css("rotate",a);
-				}
-				preX = curX;
-				preY = curY;
-				preAngle = curAngle;
+			var map = new AMap.Map("wrap", {
+				resizeEnable: true
 			});
-			//释放事件
-			$(this).mouseup(function(event){
-				event.preventDefault();
-				$(this).unbind("mousemove");
+			AMap.service(["AMap.PlaceSearch"], function() {
+				var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+					pageSize:100,
+					pageIndex: 1,
+					city: "0512", //城市
+					map: map,
+					panel: "panel"
+				});
+				//关键字查询
+				placeSearch.search("苏州瑞鹏信息科技");
 			});
-		});
-		if(IsPC()){
-			alert("aaa");
 		}
-		function IsPC()
-		{
-			var userAgentInfo = navigator.userAgent;
-			var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
-			var flag = true;
-			for (var v = 0; v < Agents.length; v++) {
-				if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
-			}
-			return flag;
-		}
-
-	}
 	})
+}
+function container10(){
+	var map = new AMap.Map("wrap", {
+				resizeEnable: true
+			});
+			AMap.service(["AMap.PlaceSearch"], function() {
+				var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+					pageSize:100,
+					pageIndex: 1,
+					city: "0512", //城市
+					map: map
+					//panel: "panel"
+				});
+				//关键字查询
+				placeSearch.search("苏州瑞鹏信息科技");
+			});
 }
 
 

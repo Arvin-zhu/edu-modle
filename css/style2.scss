@@ -1,0 +1,1199 @@
+*{
+  padding:0px;
+  margin:0px;
+}
+html,body{
+  font-size:16px;
+  height:100%;
+  margin:0px;
+}
+@font-face {font-family: 'iconfont';
+  src: url('icon/iconfont.eot'); /* IE9*/
+  src: url('icon/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('icon/iconfont.woff') format('woff'), /* chrome、firefox */
+  url('icon/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('icon/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+#container{
+  width:100%;
+  min-height:100%;
+  overflow:hidden;
+  .head{
+    width:100%;
+    max-width: 800px;
+    height: (91/16/2)+rem;
+    background-color:white;
+    position:fixed;
+    z-index: 5;
+    border-bottom:1px solid #e4e4e4;
+    .swiper-container {
+      width:92%;
+      height: (91/16/2)+rem;
+      background-color:white;
+      .swiper-slide {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        box-sizing:border-box;
+        font:{size:(14/16)+rem;family:SimHei;}
+        color:rgb(51,51,51);
+      }
+      .swiper-slide.active{
+        font:{size:(16/16)+rem;}
+        color:rgb(47,212,125);
+        border-bottom:1px solid rgb(47,212,125);
+      }
+    }
+  }
+  .body{
+    ul{
+      width:100%;
+      list-style-type: none;
+      min-height: 100%;
+      font-size: 0px;
+      margin-top: (91/16/2)+rem;
+      text-align: center;
+      li{
+        width:33.33%;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: (10/16)+rem;
+        a{
+          display: inline-block;
+          width:(182/16/2)+rem;
+          height: (136/16/2)+rem;
+          text-decoration: none;
+          text-align: center;
+          -webkit-tap-highlight-color: rgba(255,0,0,0);
+          background:url(../images/recommend1.png) no-repeat 0px 0px;
+          background-size:100% 100%;
+        }
+        span{
+          display: block;
+          width:100%;
+          overflow: hidden;
+          height: (28/16)+rem;
+          margin-top:(5/16)+rem;
+          line-height: (15/16)+rem;
+          text-align: center;
+          color:rgb(51,51,51);
+          font:{
+            size:(12/16)+rem;
+            family:SimHei;
+          }
+        }
+
+      }
+    }
+  }
+}
+#container1{
+  width:100%;
+  min-height:100%;
+  text-align:center;
+  overflow:hidden;
+  .head{
+    width:100%;
+    height:(320/16/2)+rem;
+    background:url("../images/product_info.png") no-repeat 0px 0px;
+    background-size: 100% 100%;
+  }
+  h1{
+    width:94%;
+    height:(14/16)+rem;
+    overflow: hidden;
+    margin:0 auto;
+    color:rgb(51,51,51);
+    margin:{
+      top:(30/16/2)+rem;
+      bottom:(10/16/2)+rem;
+    }
+    font:{
+      size:(14/16)+rem;
+      family: SimHei;
+    }
+    text-align: left;
+  }
+  h5{
+    width:94%;
+    margin:0 auto;
+    text-align: left;
+    color:rgb(201,201,201);
+    font:{
+      size:(10/16)+rem;
+    }
+  }
+  .word{
+    width:94%;
+    margin:0 auto;
+    p{
+      margin-top: (5/16)+rem;
+      text-align: left;
+      text-indent: 2rem;
+      line-height: 1.5;
+      color:rgb(121,121,121);
+      font:{
+        size:(14/16)+rem;
+        family:SimHei;
+      }
+      &:last-child{
+        margin-bottom: (15/16)+rem;
+      }
+    }
+  }
+}
+#container2{
+  width:100%;
+  min-height:100%;
+  overflow:hidden;
+  background-color: rgb(242,244,247);
+  .case{
+    width:(588/16/2)+rem;
+    height:(298/16/2)+rem;
+    margin:0 auto;
+    margin:{
+      top:(20/16)+rem;
+    }
+    overflow: hidden;
+    position:relative;
+    border-radius: 0 0 (6/16)+rem (6/16)+rem;
+    h1{
+      position:absolute;
+      bottom:5px;
+      z-index:9;
+      width: 94%;
+      box-sizing: border-box;
+      height:(88/16/2)+rem;
+      margin:0 auto;
+      color:white;
+      margin-left: 3%;
+      background:linear-gradient( top ,rgba(0,0,0,0.1),rgba(0,0,0,0.3));
+      background:-webkit-linear-gradient( top ,rgba(0,0,0,0.1),rgba(0,0,0,0.3));
+      background:-moz-linear-gradient( top ,rgba(0,0,0,0.1),rgba(0,0,0,0.3));
+      line-height: (88/16/2)+rem;
+      font:{
+        size:(12/16)+rem;
+        family:SimHei;
+        weight:normal;
+      }
+    }
+    span{
+      position:absolute;
+      right:(29/16/2)+rem;
+      top:(20/16/2)+rem;
+      z-index:9;
+      color:white;
+      line-height: (40/16/2)+rem;
+      background-color: rgba(0,0,0,0.4);
+      border-radius: (3/16)+rem;
+      padding-left: (5/16)+rem;
+      padding-right: (5/16)+rem;
+      font:{
+        size:(10/16)+rem;
+        family: SimHei;
+      }
+    }
+    div{
+      position:absolute;
+      width:100%;
+      height:100%;
+      margin:0  auto;
+      background:url(../images/success.png) no-repeat 0px 0px;
+      background-size:100% 100%;
+      a{
+        display: block;
+        width:100%;
+        height:100%;
+        margin:0 auto;
+        -webkit-tap-highlight-color:rgba(255,0,0,0);
+      }
+    }
+  }
+}
+#container4{
+  width:100%;
+  min-height:100%;
+  text-align:center;
+  overflow:hidden;
+  .head{
+    width:100%;
+    height:(480/16/2)+rem;
+    background:url("../images/product_info.png") no-repeat 0px 0px;
+    background-size: 100% 100%;
+  }
+  h1{
+    width:94%;
+    margin:0 auto;
+    color:rgb(51,51,51);
+    margin:{
+      top:(30/16/2)+rem;
+      bottom:(10/16/2)+rem;
+    }
+    font:{
+      size:(14/16)+rem;
+      family: SimHei;
+    }
+    text-align: left;
+  }
+  .word{
+    width:94%;
+    margin:0 auto;
+    color:rgb(102,102,102);
+    text-align: left;
+    text-indent: (28/16)+rem;
+    font:{
+      size:(14/16)+rem;
+      family: SimHei;
+    }
+  }
+}
+#container5{
+  width:100%;
+  min-height:100%;
+  overflow:hidden;
+  background-color: rgb(242,244,247);
+  .head{
+    width:100%;
+    position:fixed;
+    z-index:6;
+    height:(88/16/2)+rem;
+    border-bottom:1px solid silver;
+    color:rgb(47,212,125);
+    line-height:(88/16/2)+rem;
+    text-align: center;
+    background-color: white;
+    font:{
+      size:(18/16)+rem;
+      family: SimHei;
+    }
+    .iconfont{
+      margin-left: (5/16)+rem;
+      font-family:"iconfont";
+      font-style: normal;
+      font-size: (12/16)+rem;
+      color:rgb(47,212,125);
+    }
+  }
+  .zhezhao{
+    width:100%;
+    height:100%;
+    position:fixed;
+    background-color: rgba(0,0,0,0.3);
+    opacity:0;
+    z-index:-1;
+  }
+  .nav{
+    width:100%;
+    position:fixed;
+    top:(88/16/2)+rem;
+    z-index:5;
+    background-color: white;
+    display:none;
+    ul{
+      list-style-type: none;
+      li{
+        width:100%;
+        height:(88/16/2)+rem;
+        color:rgb(102,102,102);
+        border-bottom: 1px solid rgb(235,235,235);
+        text-align: center;
+        line-height: (88/16/2)+rem;
+        font:{
+          size:1rem;
+          family: SimHei;
+        }
+        &.active{
+          color:rgb(47,212,125);
+        }
+      }
+    }
+  }
+  &>ul{
+    list-style-type: none;
+    width:100%;
+    margin-top: (110/16/2)+rem;
+    li{
+      margin-top: (22/16/2)+rem;
+      height:(281/16/2)+rem;
+      position:relative;
+      border:1px solid rgb(221,221,221);
+      background:url(../images/news.png) no-repeat (27/16/2)+rem (31/16/2)+rem;
+      background-size: (160/16/2)+rem 5rem;
+      background-color: white;
+      span{
+        width:92%;
+        margin-left:4%;
+        border-top:1px solid rgb(235,235,235);
+        line-height:(61/16/2)+rem;
+        box-sizing: border-box;
+        text-align: left;
+        height:(61/16/2)+rem;
+        color:rgb(153,153,153);
+        position:absolute;
+        bottom:0px;
+        font:{
+          size:(12/16)+rem;
+          family: SimHei;
+        }
+      }
+      div{
+        width:64%;
+        height:(160/16/2)+rem;
+        float: right;
+        margin-top: (31/16/2)+rem;
+        margin-right: (27/16/2)+rem;
+        h1{
+          width:100%;
+          text-align: left;
+          color:rgb(51,51,51);
+          max-height:2.275rem;
+          line-height:1.3;
+          overflow: hidden;
+          font:{
+            size:(14/16)+rem;
+            family: SimHei;
+            weight:normal;
+          }
+        }
+        p{
+          width:100%;
+          max-height:1.95rem;
+          line-height:1.3;
+          margin-top: (10/16)+rem;
+          color:rgb(102,102,102);
+          overflow: hidden;
+          font:{
+            size:(12/16)+rem;
+            family:SimHei;
+          }
+        }
+      }
+    }
+  }
+}
+#container6{
+  width:100%;
+  min-height:100%;
+  overflow:hidden;
+  background:url("../images/message_1.png") no-repeat 0px 0px;
+  background-size: 100% 100%;
+  ul{
+    width:100%;
+    height:100%;
+    list-style-type: none;
+    overflow: hidden;
+    &>li{
+      width:100%;
+      height:100%;
+      position:absolute;
+      div.wrap{
+        width:(460/16/2)+rem;
+        height:(634/16/2)+rem;
+        margin:0 auto;
+        margin-top: (130/16/2)+rem;
+        border-radius:(8/16)+rem;
+        background-color:white;
+        .head{
+          width:100%;
+          height:(88/16/2)+rem;
+          background-color:rgb(47,212,125);
+          border-radius: (8/16)+rem (8/16)+rem 0 0;
+          padding:{
+            left:(10/16)+rem;
+            right:(10/16)+rem;
+          }
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          span{
+            color:white;
+            line-height: (88/16/2)+rem;
+            &:first-child{
+              float:left;
+              font:{
+                size:(18/16)+rem;
+                family: SimHei;
+              }
+            }
+            &:last-child{
+              float:right;
+              font:{
+                size:(12/16)+rem;
+                family: SimHei;
+              }
+            }
+          }
+        }
+        p{
+          margin-left: (10/16)+rem;
+          margin-top: (10/16)+rem;
+          margin-bottom: (10/16)+rem;
+          color:rgb(102,102,102);
+          font:{
+            size:(12/16)+rem;
+            family: SimHei;
+          }
+          span{
+            color:rgb(47,212,125);
+          }
+        }
+        ol{
+          list-style-position: inside;
+          li{
+            margin-bottom: (10/16)+rem;
+            padding:{
+              left:(10/16)+rem;
+              right:(10/16)+rem;
+            }
+            box-sizing: border-box;
+            color:rgb(173,173,173);
+            font:{
+              size:(10/16)+rem;
+              family: SimHei;
+            }
+          }
+        }
+      }
+    }
+  }
+  .iconfont{
+    font-family:"iconfont";
+    font-style: normal;
+    font-weight: bold;
+    font-size: (32/16)+rem;
+    color:white;
+    text-shadow: 0 0 (10/16)+rem rgb(53,53,53) ;
+  }
+  .right{
+    position:absolute;
+    right:(10/16)+rem;
+    top:(447/16/2)+rem;
+  }
+  .left{
+    position:absolute;
+    left:(10/16)+rem;
+    top:(447/16/2)+rem;
+  }
+}
+#container7{
+  width:100%;
+  min-height:100%;
+  overflow:hidden;
+  background-color: rgb(242,244,247);
+  .case{
+    width:100%;
+    height:(400/16/2)+rem;
+    margin:{
+      top:(10/16)+rem;
+    }
+    padding-bottom:(15/16)+rem;
+    overflow: hidden;
+    background-color:white;
+    border:1px solid rgb(221,221,221);
+    h1{
+      width: (580/16/2)+rem;
+      margin:0 auto;
+      margin:{top:(15/16)+rem;bottom:(5/16)+rem;}
+      font:{
+        size:(14/16)+rem;
+        family:SimHei;
+      }
+    }
+    span{
+      display: block;
+      width:(580/16/2)+rem;
+      margin:0 auto;
+      margin-bottom: (5/15)+rem;
+      color:rgb(27,172,217);
+      font:{size:(10/16)+rem;family:SimHei;}
+    }
+    .pic{
+      height: (290/16/2)+rem;
+      width: (580/16/2)+rem;
+      margin:0 auto;
+      background:url(../images/success.png) no-repeat 0px 0px;
+      background-size:100% 100%;
+      a{
+        display: block;
+        height: (290/16/2)+rem;
+        width: (580/16/2)+rem;
+        margin:0 auto;
+        -webkit-tap-highlight-color:rgba(255,0,0,0);
+        img{
+          width:100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+#container8{
+  width:100%;
+  min-height:100%;
+  overflow:hidden;
+  h1{
+    width: 100%;
+    height: 1rem;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 0.9375rem;
+    font-size: 1rem;
+    font-family: SimHei;
+    margin-bottom: 0.625rem;
+  }
+  h2{
+    width: 100%;
+    height: 0.625rem;
+    overflow: hidden;
+    text-align: center;
+    color: #999999;
+    margin-bottom: 1.25rem;
+    font-size: 0.625rem;
+  }
+  p{
+    width:92%;
+    margin:0 auto;
+    line-height: 1.5;
+    margin-bottom: (15/16)+rem;
+    font:{
+      size:(14/16)+rem;
+      family:SimHei;
+    }
+    text-indent: 2rem;
+  }
+}
+#container9{
+  width:100%;
+  height:100%;
+  position:relative;
+  .wraper{
+    list-style-type: none;
+    height: 100%;
+    width:100%;
+    position:relative;
+    &>li{
+      width:100%;
+      float: left;
+      position:absolute;
+    }
+    .guide{
+      width:100%;
+      height:100%;
+      display: none;
+      .body{
+        width:100%;
+        min-height: 100%;
+        overflow: hidden;
+        #wrap{
+          width:100%;
+          height: (480/16/2)+rem;
+          position:fixed;
+          left:0px;
+          top:0px;
+          z-index: 5;
+          background-color:white;
+          border-bottom:1px solid silver;
+          .amap-logo img{
+            display:none;
+          }
+          .amap-copyright{
+            display:none;
+          }
+        }
+        #panel{
+          width:100%;
+          margin-top: (480/16/2)+rem;
+          margin-bottom:(115/16/2)+rem;
+          overflow:auto;
+          .amap_lib_placeSearch_list{
+            ul{
+              width:(580/16/2)+rem;
+              margin:0 auto;
+              padding-top: 1rem;
+              li.poibox{
+                width:100%;
+                padding:0px;
+                height:(88/16/2)+rem;
+                position:relative;
+                border:1px solid rgb(47,212,125);
+                margin-bottom: (21/16/2)+rem;
+                border-radius: (5/16)+rem;
+                box-sizing: border-box;
+                .poi-info{
+                  display: none;
+                }
+                .poibox-icon{
+                  width:(116/16/2)+rem;
+                  height:(88/16/2)+rem;
+                  display:inline-block;
+                  margin-left:(464/16/2)+rem;
+                  background:url("../images/guide.png") no-repeat 50% 50%;
+                  background-size: (32/16/2)+rem (42/16/2)+rem;
+                  background-color:rgb(47,212,125);
+                }
+                .poi-title{
+                  display:inline-block;
+                  width:(464/16/2)+rem;
+                  height:100%;
+                  overflow: hidden;
+                  color:rgb(51,51,51);
+                  box-sizing: border-box;
+                  span{
+                    font:{
+                      size:(14/16)+rem;
+                      family: SimHei;
+                    }
+                    line-height: (88/16/2)+rem;
+                  }
+                  a{
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+          .amap_lib_placeSearch_page{
+            display: none;
+          }
+          .amap_lib_placeSearch{
+            border:none;
+          }
+          .amap_lib_placeSearch_poi{
+            background:url(../images/guide.png) no-repeat 0px 0px;
+            background-size: (15/16)+rem (25/16)+rem;
+            height:(31/16)+rem;
+            width:(19/16)+rem;
+            left:(-1/16)+rem;
+            font-size:0px;
+          }
+          .poibox{
+            font-size:(12/16)+rem;
+            min-height:(48/16)+rem;
+          }
+          .amap_lib_placeSearch .poibox .poi-info p{
+            line-height: (20/16)+rem;
+          }
+          .poi-title{
+            font-size:(13/16)+rem;
+            margin-left: (25/16)+rem;
+          }
+        }
+      }
+    }
+    .call{
+      width:100%;
+      min-height:100%;
+      background:url("../images/message_1.png") no-repeat 0px 0px;
+      background-size: 100% 100%;
+      overflow:hidden;
+      display: none;
+      padding-top: (20/16)+rem;
+      box-sizing: border-box;
+      .message{
+        width:(580/16/2)+rem;
+        height:(88/16/2)+rem;
+        margin:0 auto;
+        background-color:white;
+        border:1px solid rgb(221,221,221);
+        border-radius:(5/16)+rem;
+        margin:{bottom:(15/16)+rem;}
+        a{
+          display: block;
+          width:100%;
+          height:100%;
+          text-decoration: none;
+          color:rgb(29,189,239);
+          -webkit-tap-highlight-color: rgba(255,0,0,0);
+          font-size:0px;
+          .company{
+            display:inline-block;
+            width:80%;
+            height:100%;
+            line-height: (88/16/2)+rem;
+            overflow: hidden;
+            color:rgb(51,51,51);
+            box-sizing: border-box;
+            font:{
+              size:(14/16)+rem;
+              family: SimHei;
+            }
+            padding:{
+              left:(4/16)+rem;
+              right:(4/16)+rem;
+            }
+          }
+          .contact{
+            width:20%;
+            height:100%;
+            display:inline-block;
+            background-color:rgb(47,212,125);
+            position:relative;
+            .iconfont{
+              position:absolute;
+              left:50%;
+              margin-left: -(18/16/2)+rem;
+              font-family:"iconfont";
+              font-size:(18/16)+rem;
+              font-weight: bold;
+              font-style:normal;
+              vertical-align: top;
+              line-height: (88/16/2)+rem;
+              color:white;
+            }
+          }
+        }
+        &:last-child{
+          margin-bottom: (116/16/2)+rem;
+        }
+      }
+    }
+    .home{
+      width:100%;
+      min-height: 100%;
+      padding-bottom: (101/16/2)+rem;
+      overflow:hidden;
+      position:relative;
+      display: block;
+      overflow: hidden;
+      background:url(../images/index2_1.png) no-repeat 0px 0px;
+      background-size: (640/16/2)+rem (1136/16/2)+rem;
+      display: block;
+      div{
+        width:(150/16/2)+rem;
+        height:(170/16/2)+rem;
+        a{
+          text-decoration: none;
+          -webkit-tap-highlight-color: rgba(255,0,0,0);
+          display:block;
+          width:100%;
+          height:100%;
+          position:relative;
+          .pic{
+            display: block;
+            width:(118/16/2)+rem;
+            margin:0 auto;
+            height:(121/16/2)+rem;
+          }
+          .word{
+            display: block;
+            width:100%;
+            text-align: center;
+            color:white;
+            position:absolute;
+            bottom:0px;
+            font:{
+              size:1rem;
+              family: SimHei;
+            }
+          }
+        }
+      }
+      .a1{
+        position:absolute;
+        left:(54/16/2)+rem;
+        top:(65/16/2)+rem;
+        .pic{
+          background:url("../images/index1_2.png") no-repeat 0px 0px;
+          background-size: 100% 100%;
+        }
+      }
+      .a2{
+        position:absolute;
+        right:(54/16/2)+rem;
+        top:(26/16/2)+rem;
+        .pic{
+          background:url("../images/index1_3.png") no-repeat 0px 0px;
+          background-size: 100% 100%;
+        }
+      }
+      .a3{
+        position:absolute;
+        left:(54/16/2)+rem;
+        top:(410/16/2)+rem;
+        .pic{
+          background:url("../images/index1_4.png") no-repeat 0px 0px;
+          background-size: 100% 100%;
+        }
+      }
+      .a4{
+        position:absolute;
+        right:(54/16/2)+rem;
+        top:(340/16/2)+rem;
+        .pic{
+          background:url("../images/index1_5.png") no-repeat 0px 0px;
+          background-size: 100% 100%;
+        }
+      }
+      .a5{
+        position:absolute;
+        left:(54/16/2)+rem;
+        top:(720/16/2)+rem;
+        .pic{
+          background:url("../images/index1_6.png") no-repeat 0px 0px;
+          background-size: 100% 100%;
+        }
+      }
+      .a6{
+        position:absolute;
+        right:(54/16/2)+rem;
+        top:(620/16/2)+rem;
+        .pic{
+          background:url("../images/index1_7.png") no-repeat 0px 0px;
+          background-size: 100% 100%;
+        }
+      }
+    }
+    .smes{
+      width:100%;
+      min-height:100%;
+      background:url("../images/message_2.png") no-repeat 0px 0px;
+      background-size: 100% 100%;
+      overflow:hidden;
+      display: none;
+      padding-top: (20/16)+rem;
+      box-sizing: border-box;
+      .message{
+        width:(580/16/2)+rem;
+        height:(88/16/2)+rem;
+        margin:0 auto;
+        background-color:white;
+        border:1px solid rgb(221,221,221);
+        border-radius:(5/16)+rem;
+        margin:{bottom:(15/16)+rem;}
+        a{
+          display: block;
+          width:100%;
+          height:100%;
+          text-decoration: none;
+          color:rgb(29,189,239);
+          -webkit-tap-highlight-color: rgba(255,0,0,0);
+          font-size:0px;
+          .company{
+            display:inline-block;
+            width:80%;
+            height:100%;
+            line-height: (88/16/2)+rem;
+            overflow: hidden;
+            color:rgb(51,51,51);
+            box-sizing: border-box;
+            font:{
+              size:(14/16)+rem;
+              family: SimHei;
+            }
+            padding:{
+              left:(4/16)+rem;
+              right:(4/16)+rem;
+            }
+          }
+          .contact{
+            width:20%;
+            height:100%;
+            display:inline-block;
+            background-color:rgb(47,212,125);
+            position:relative;
+            .iconfont{
+              position:absolute;
+              left:50%;
+              margin-left: -(18/16/2)+rem;
+              font-family:"iconfont";
+              font-size:(18/16)+rem;
+              font-weight: bold;
+              font-style:normal;
+              vertical-align: top;
+              line-height: (88/16/2)+rem;
+              color:white;
+            }
+          }
+        }
+        &:last-child{
+          margin-bottom: (116/16/2)+rem;
+        }
+      }
+    }
+    .online_smes{
+      width:100%;
+      min-height:100%;
+      overflow:hidden;
+      display: none;
+      background:url("../images/message_1.png") no-repeat 0px 0px;
+      background-size: 100% 100%;
+      padding-top: (70/16/2)+rem;
+      box-sizing: border-box;
+      form{
+        margin-bottom:(115/16/2)+rem;
+        input{
+          width:92%;
+          margin:0 auto;
+          margin-bottom: (22/16/2)+rem;
+          display: block;
+          height: (90/16/2)+rem;
+          box-sizing: border-box;
+          padding-left:7%;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom:none;
+          outline: none;
+          border-radius: (5/16)+rem;
+          font:{
+            size:1rem;
+            family:SimHei;
+          }
+        }
+        input:focus{
+          border:#87C6F9 1px solid;
+          box-shadow: 0 0 8px rgba(103, 166, 217, 1);
+        }
+        input::-webkit-input-placeholder{
+          text-align: center;
+        }
+        textarea{
+          display:block;
+          width:92%;
+          margin:0 auto;
+          margin-top: (10/16)+rem;
+          border:1px solid rgb(221,221,221);
+          font:{
+            size:(14/16)+rem;
+            family:SimHei;
+          }
+          resize: none;
+          padding-left:5%;
+          padding-right: 5%;
+          padding-top:2%;
+          box-sizing:border-box;
+          border-radius: (5/16)+rem;
+          outline:none;
+        }
+        textarea:focus{
+          border:1px solid #87c6f9;
+          box-shadow:0 0 8px rgba(103,166,217,1);
+        }
+        button{
+          width:90%;
+          display:block;
+          margin:0 auto;
+          margin-top: (20/16)+rem;
+          height: (88/16/2)+rem;
+          background-color:rgb(47,212,125);
+          border-radius:5px;
+          border:none;
+          color:white;
+          font:{
+            size:(18/16)+rem;
+          }
+          -webkit-appearance: none;
+        }
+      }
+    }
+  }
+  .nav{
+    width:100%;
+    max-width: 800px;
+    height: (101/16/2)+rem;
+    background-color:white;
+    position:fixed;
+    bottom:0px;
+    ul{
+      width:100%;
+      height: 100%;
+      list-style-type: none;
+      li{
+        width:20%;
+        height: 100%;
+        float: left;
+        text-align: center;
+        .iconfont{
+          display: block;
+          font-family:"iconfont";
+          font-weight: bold;
+          font-size:(16/16)+rem;
+          font-style:normal;
+          color:rgb(125,130,136);
+          margin-top: (7/16)+rem;
+          margin-bottom: (7/16)+rem;
+        }
+        span{
+          display: block;
+          color:rgb(125,130,136);
+          font:{
+            size:(10/16)+rem;
+            family:SimHei;
+          }
+        }
+        &.active .iconfont,&.active span{
+          color:rgb(47,212,125);
+        }
+        // &:last-child{
+        // 		.iconfont{margin-top:(8/16)+rem;
+        // 			margin-bottom:(6/16)+rem;}
+        // }
+      }
+
+    }
+  }
+}
+#container10{
+  width:100%;
+  height:100%;
+  .body{
+    width:100%;
+    min-height: 100%;
+    overflow: hidden;
+    #wrap{
+      width:100%;
+      height: (480/16/2)+rem;
+      position:fixed;
+      left:0px;
+      top:0px;
+      z-index: 5;
+      background-color:white;
+      border-bottom:1px solid silver;
+      .amap-logo img{
+        display:none;
+      }
+      .amap-copyright{
+        display:none;
+      }
+    }
+    #panel{
+      width:100%;
+      margin-top: (480/16/2)+rem;
+      margin-bottom:(115/16/2)+rem;
+      overflow:auto;
+      ul{
+        width:100%;
+        list-style-type: none;
+        li{
+          width:100%;
+          height:(88/16/2)+rem;
+          overflow:hidden;
+          border-bottom: 1px solid rgb(221,221,221);
+          span{
+            width:80%;
+            display:inline-block;
+            color:rgb(51,51,51);
+            line-height: (88/16/2)+rem;
+            box-sizing: border-box;
+            overflow: hidden;
+            padding:{
+              left:3%;
+              right:3%;
+            }
+            font:{
+              size:1rem;
+              family: SimHei;
+            }
+          }
+          .iconfont{
+            display: inline-block;
+            width:20%;
+            text-align: center;
+            font-family: "iconfont";
+            font-style: normal;
+            font-size:1rem;
+            line-height: (88/16/2)+rem;
+            vertical-align: top;
+            color:rgb(187,187,187);
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:320px){
+  html,body{
+    font-size: (320/320*16)+px;
+  }
+
+}
+// @media screen and (max-height:480px){
+// 	html,body{
+// 		font-size: (480/568*16)+px;
+// 	}
+// }
+@media screen and (min-height:568px){
+  html,body{
+    font-size: (320/320*16)+px;
+  }
+
+}
+@media screen and (min-width:360px){
+  html,body{
+    font-size: (360/320*16)+px;
+  }
+}
+@media screen and (min-width:375px){
+  html,body{
+    font-size: (375/320*16)+px;
+  }
+}
+@media screen and (min-width:384px){
+  html,body{
+    font-size: (384/320*16)+px;
+  }
+}
+@media screen and (min-width:412px){
+  html,body{
+    font-size: (414/320*16)+px;
+  }
+}
+@media screen and (min-width:454px){
+  html,body{
+    font-size: (454/320*16)+px;
+  }
+}
+@media screen and (min-width:500px){
+  html,body{
+    font-size: (500/320*16)+px;
+  }
+}
+@media screen and (min-width:550px){
+  html,body{
+    font-size: (550/320*16)+px;
+  }
+}
+@media screen and (min-width:600px){
+  html,body{
+    font-size: (600/320*16)+px;
+  }
+}
+@media screen and (min-width:650px){
+  html,body{
+    font-size: (650/320*16)+px;
+  }
+}
+@media screen and (min-width:700px){
+  html,body{
+    font-size: (700/320*16)+px;
+  }
+}
+@media screen and (min-width:750px){
+  html,body{
+    font-size: (750/320*16)+px;
+  }
+}
+@media screen and (min-width:768px){
+  html,body{
+    font-size: (768/320*16)+px;
+  }
+}
+@media screen and (min-width:800px){
+  html,body{
+    font-size: (800/320*16)+px;
+  }
+  #container,#container1,#container2,#container3,#container4,#container5,
+  #container6,#container7,#container8,#container9,#container10{
+    width:800px;
+    margin:0 auto;
+  }
+}
